@@ -1,0 +1,29 @@
+.searchBar {
+    padding: 13px;
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 10%);
+    border-radius: 15px;
+    border: solid 1px hsl(0, 0%, 20%);
+}
+
+.searchLogo {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+}
+
+.searchBarInput {
+    color: hsl(0, 0%, 100%);
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background-color: hsl(0, 0%, 10%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 90%;
+    margin: 5px;
+}

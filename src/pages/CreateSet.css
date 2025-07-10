@@ -1,0 +1,69 @@
+.inputs {
+    padding: 1%;
+    width: 95%;
+    border-radius: 15px;
+    border: 1px solid hsl(0, 0%, 50%);
+    background-color: hsl(0, 0%, 18%);
+    color: hsl(0, 0%, 100%);
+}
+
+.setNameInput {
+    margin: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.setDescriptionInput {
+    min-width: 95%;
+    max-width: 95%;
+    min-height: 100px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.createSetContainer {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: hsl(0, 0%, 14%);
+    padding: 2%;
+    border-radius: 15px;
+}
+
+.addButton {
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(207, 100%, 50%);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    font-size: 10px;
+    width: 20%;
+}
+
+.addCardButton {
+    border: solid 3px hsl(207, 100%, 50%);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.doneCardButton {
+    border: solid 3px hsl(207, 100%, 50%);
+    cursor: pointer;
+}
+
+.addCardContainer {
+    border: 1px solid hsl(0, 0%, 50%);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
