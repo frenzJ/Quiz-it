@@ -1,17 +1,17 @@
 import './CardBox.css';
 
 
-function CardBox({numberOfCards}){
+function CardBox({cards, onChange}) {
     return(
         <>
-            {numberOfCards.map((cardId) => (
-                <div className="cardBoxContainer" key={cardId}> 
-                    <div id={numberOfCards} className="SetName">
-                        <textarea className="cardInputs setTermInput" placeholder="Term" />
+            {cards.map((card, index) => (
+                <div className="cardBoxContainer" key={index}> 
+                    <div className="SetTerm">
+                        <textarea value={card.term} onChange={(e) => onChange(index, 'term', e.target.value)} name="term" className="cardInputs setTermInput" placeholder="Term" />
                     </div>
 
-                    <div id={numberOfCards} className="SetDescription">
-                        <textarea className="cardInputs setDefinitionInput" placeholder="Definition" />
+                    <div className="Setdefinition">
+                        <textarea value={card.definition} onChange={(e) => onChange(index, 'description', e.target.value)} name="definition" className="cardInputs setDefinitionInput" placeholder="Definition" />
                     </div>
                 </div>
             ))}
