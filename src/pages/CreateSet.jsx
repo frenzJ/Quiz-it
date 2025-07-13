@@ -5,11 +5,12 @@ import CardBox from "../components/CardBox";
 import { useState, useEffect } from "react";
 
 function CreateSet(){
+        const [cardSet, setCardSet] = useState({set_name: "", description: ""});
     const [cards, setCards] = useState([{term: "", definition: ""},
                                         {term: "", definition: ""},
                                         {term: "", definition: ""}
                                         ]);
-    const [cardSet, setCardSet] = useState({set_name: "", description: ""});
+
 
     const handleAddCard = () => {
         setCards(prevCards => [...prevCards, {term: "", definition: ""}]);
@@ -23,6 +24,11 @@ function CreateSet(){
         const updatedCards = [...cards];
         updatedCards[index][field] = value;
         setCards(updatedCards);
+    }
+
+    const handleDeleteCard = (index) => {
+        const filteredCard = cards.filter((_, i) => i !== index)
+        setCards(filteredCard)
     }
 
 
@@ -40,31 +46,43 @@ function CreateSet(){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch("http://localhost/Quiz-it/backend/sets/create.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(cardSet)
+        const resSet = await fetch("http://localhost/Quiz-it/backend/sets/create.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cardSet)
         });
 
-        const result = await res.json();
-        console.log(result.message)
+        const responseSet = await resSet.json();
+        console.log(responseSet.message);
+        const set_id = responseSet.set_id;
 
-        await fetch("http://localhost/Quiz-it/backend/cards/create.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            set_id: result.set_id,
-            cards: cards
-        })
-        });
+        
+        const promises = cards.map(card =>
+            fetch("http://localhost/Quiz-it/backend/cards/create.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    set_id: set_id,
+                    term: card.term,
+                    definition: card.definition
+                })
+            })
+        );
 
-        setCardSet({set_name: "", description: ""});
-        setCards([{term: "", definition: ""}]);
-        }
+        await Promise.all(promises);
+
+        setCardSet({set_name: "", description: ""})
+        setCards([{term: "", definition: ""},
+                    {term: "", definition: ""},
+                    {term: "", definition: ""}
+                ])
+        console.log("All cards created");
+    };
+
 
 
 
@@ -78,7 +96,7 @@ function CreateSet(){
                     
                         <div className="createSetContainer"> 
                             <div className="SetName">
-                                    <input value={cardSet.set_name} onChange={handleChangeSet} className="inputs setNameInput" name="set_name" type="text" placeholder="Set name" />
+                                    <input autoComplete="off" value={cardSet.set_name} onChange={handleChangeSet} className="inputs setNameInput" name="set_name" type="text" placeholder="Set name" />
                             </div>
 
                             <div className="SetDescription">
@@ -88,7 +106,7 @@ function CreateSet(){
 
                         <SearchBar/>
                             
-                        <CardBox cards={cards} onChange={handleChangeCard}/>
+                        <CardBox cards={cards} onChange={handleChangeCard} onClick={handleDeleteCard}/>
                         
                         <div>
                             <div className="addCardContainer">

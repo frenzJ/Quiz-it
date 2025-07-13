@@ -1,6 +1,7 @@
 import "./HomePage.css";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
+import CardBoxDisplay from "../components/CardBoxDisplay";
 import { useNavigate } from "react-router-dom";
 
 function HomePage(){
@@ -21,7 +22,7 @@ function HomePage(){
                     <SearchBar/>
 
                     <div className="cardContainer">
-                        <h1>cards here</h1>
+                        <CardBoxDisplay/>
                     </div>
 
                     <div className="createSetButtonContainer">
