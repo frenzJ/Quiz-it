@@ -1,12 +1,10 @@
 .cardBox{
     padding: 15px;
     background-color: hsl(0, 0%, 13%);
-    width: 350px;
+    width: 85%;
     height: 150px;
-    margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+    
     border-radius: 15px;
     display: grid;
 } 

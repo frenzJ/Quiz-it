@@ -1,4 +1,4 @@
-import "./AddEditCards.css";
+import "./AddEditCards.module.css";
 
 function AddEditCards(){
 

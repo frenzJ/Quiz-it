@@ -1,4 +1,4 @@
-import "./FlashCard.css";
+import "./FlashCard.module.css";
 
 function FlashCard(){
 

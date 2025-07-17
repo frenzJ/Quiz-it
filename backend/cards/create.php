@@ -5,11 +5,6 @@
     $set_id = $data['set_id'];
     $term = $data['term'];
     $definition = $data['definition'];
-
-    var_dump($data);
-    var_dump($set_id);
-    var_dump($term);
-    var_dump($definition);
         
 
     if ($term && $definition && $set_id){

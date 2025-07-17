@@ -20,7 +20,7 @@
     margin-right: 7px;
 }
 
-#settings {
+.settings {
     border-radius: 10px;
     height: 15px;
     width: 15px;
@@ -28,7 +28,7 @@
     background-color: hsl(217, 43%, 30%);;
 }
 
-#mode {
+.mode {
     border-radius: 10px;
     height: 15px;
     width: 15px;
@@ -36,7 +36,7 @@
     background-color: hsl(217, 43%, 30%);;
 }
 
-#logo {
+.logo {
     height: 35px;
     width: 35px;
 }

@@ -1,4 +1,4 @@
-import "./Writing.css";
+import "./Writing.module.css";
 
 function Writing(){
 

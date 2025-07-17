@@ -1,4 +1,4 @@
-import "./MatchList.css";
+import "./MatchList.module.css";
 
 function MatchList(){
 

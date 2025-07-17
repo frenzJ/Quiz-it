@@ -1,4 +1,4 @@
-import "./MultipleChoice.css";
+import "./MultipleChoice.module.css";
 
 function MultipleChoice(){
 
