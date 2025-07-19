@@ -1,6 +1,5 @@
 .inputs {
     padding: 1%;
-    width: 95%;
     border-radius: 15px;
     border: 1px solid hsl(0, 0%, 50%);
     background-color: hsl(0, 0%, 18%);
@@ -8,6 +7,8 @@
 }
 
 .setNameInput {
+    min-width: 95%;
+    max-width: 95%;
     margin: 20px;
     font-size: 40px;
     font-weight: bold;

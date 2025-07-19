@@ -1,13 +1,13 @@
 import styles from './CardBoxDisplayHomepage.module.css';
 import PropTypes from 'prop-types';
 
-function CardBoxDisplayHomepage({ cards = [], totalCardsPerSet = [], onClick }) {
+function CardBoxDisplayHomepage({cards = [], totalCardsPerSet = [], onClick }) {
     return (
         <>
             {cards.map((card, index) => (
                 <div className={styles.cardBox} key={index}>
                     <img
-                        onClick={() => onClick(card.set_name)}
+                        onClick={() => onClick({ set_id: card.set_id, set_name: card.set_name })}
                         className={styles.deleteButtonDisplay}
                         src="/assets/delete1.png"
                         alt="Delete"
@@ -27,6 +27,8 @@ function CardBoxDisplayHomepage({ cards = [], totalCardsPerSet = [], onClick }) 
                         </div>
                     </div>
                 </div>
+
+                
             ))}
         </>
     );
@@ -35,6 +37,7 @@ function CardBoxDisplayHomepage({ cards = [], totalCardsPerSet = [], onClick }) 
 CardBoxDisplayHomepage.propTypes = {
     cards: PropTypes.arrayOf(
         PropTypes.shape({
+            set_id: PropTypes.number,
             set_name: PropTypes.string,
             description: PropTypes.string,
             set_date: PropTypes.string,
