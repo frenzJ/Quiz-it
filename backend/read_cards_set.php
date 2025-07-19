@@ -2,7 +2,7 @@
     require './db.php';
     $results = [];
 
-    $sql = "SELECT sets.set_name, sets.description, sets.set_date, cards.term, cards.definition
+    $sql = "SELECT sets.set_id, sets.set_name, sets.description, sets.set_date, cards.term, cards.definition
             FROM sets
             INNER JOIN cards ON sets.set_id = cards.set_id
             ORDER BY sets.set_id DESC";
@@ -14,6 +14,7 @@
             $set_name = $cardRow['set_name'];
             if(!isset($results[$set_name])) {
                 $results[$set_name] = [
+                    "set_id" => $cardRow['set_id'],
                     "description" => $cardRow['description'], 
                     "set_date" => $cardRow['set_date'],
                     "cards" => []

@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-	const [cards, setCards] = useState([{}]);
+	const [cards, setCards] = useState([]);
 	const [totalCardsPerSet, setTotalCardsPerSet] = useState([]);
 	const [showPopUp, setShowPopUp] = useState(false);
+	const [itemToDeleteId, setItemToDeleteId] = useState("");
 	const [itemToDeleteName, setItemToDeleteName] = useState("");
 
 	const navigate = useNavigate();
@@ -17,42 +18,53 @@ function HomePage() {
 		navigate("/CreateSet");
 	};
 
+	const fetchData = async () => {
+		try {
+			const response = await fetch("http://localhost/Quiz-it/backend/read_cards_set.php");
+			const data = await response.json();
+
+			const arrayData = Object.keys(data.set).map((key) => ({
+				set_name: key,
+				...data.set[key],
+			}));
+
+			setCards(arrayData);
+			setTotalCardsPerSet(data.totalCardsPerSet);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	useEffect(() => {
-		const fetchData = async () => {
-			await fetch("http://localhost/Quiz-it/backend/read_cards_set.php")
-				.then((response) => response.json())
-				.then((data) => {
-					const arrayData = Object.keys(data.set).map((key) => ({
-						set_name: key,
-						...data.set[key],
-					}));
-					setCards(arrayData);
-					setTotalCardsPerSet(data.totalCardsPerSet);
-				})
-				.catch((error) => console.error(error));
-		};
-
 		fetchData();
-	}, []);
+	}, [])
 
-	function handleCLickDelete(set_name) {
+
+	function handleClickDelete({set_id, set_name}) {
+		setItemToDeleteId(set_id);
 		setItemToDeleteName(set_name);
 		setShowPopUp(true);
 		document.body.style.overflow = "hidden";
 	}
 
 	const confirmDelete = async () => {
-		console.log(itemToDeleteName)
 		try {
-			await fetch("http://localhost/Quiz-it/backend/sets/delete.php", {
+			const resDelete = await fetch("http://localhost/Quiz-it/backend/sets/delete.php", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ set_name: itemToDeleteName }),
+				body: JSON.stringify({ set_id: itemToDeleteId}),
 			});
-		} catch {
-			console.log("problem in fetching set");
+
+			const responeDelete = await resDelete.json();
+			console.log(responeDelete.message)
+		} catch(error){
+			console.error("Problem in fetching set:", error);
+		}
+
+		if(cards.length > 1){
+			await fetchData()
 		}
 
 		setShowPopUp(false);
@@ -75,7 +87,7 @@ function HomePage() {
 					<div className={styles.cardContainer}>
 						<CardBoxDisplayHomepage
 							cards={cards}
-							onClick={handleCLickDelete}
+							onClick={handleClickDelete}
 							totalCardsPerSet={totalCardsPerSet}
 						/>
 					</div>
@@ -98,8 +110,8 @@ function HomePage() {
 							<div className={styles.deletePopupBox}>
 								<h1 className={styles.deleteSetText1}>Delete Set</h1>
 								<p className={styles.deleteSetText2}>
-									Are you sure you want to delete "{itemToDeleteName}"? <br /> This
-									action cannot be undone.
+									Are you sure you want to delete "{itemToDeleteName}"? <br /> 
+									This action cannot be undone.
 								</p>
 								<div>
 									<button className={`${styles.deleteButton} ${styles.cancelDeleteButton}`} onClick={cancelDelete}>Cancel</button>
