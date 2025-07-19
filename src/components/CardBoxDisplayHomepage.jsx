@@ -27,8 +27,6 @@ function CardBoxDisplayHomepage({cards = [], totalCardsPerSet = [], onClick }) {
                         </div>
                     </div>
                 </div>
-
-                
             ))}
         </>
     );

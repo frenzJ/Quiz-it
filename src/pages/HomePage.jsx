@@ -63,10 +63,14 @@ function HomePage() {
 			console.error("Problem in fetching set:", error);
 		}
 
-		if(cards.length > 1){
+		
+		if(cards.length === 1){
+			setCards([])
+		} else {
 			await fetchData()
 		}
-
+		
+		
 		setShowPopUp(false);
 		document.body.style.overflow = "auto";
 	};
