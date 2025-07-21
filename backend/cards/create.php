@@ -7,7 +7,7 @@ $term = $data['term'];
 $definition = $data['definition'];
 
 
-if ($term && $definition && $set_id) {
+if (!empty($term) && !empty($definition) && !empty($set_id)) {
 
     $sql = "INSERT INTO cards (set_id, term, definition) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);

@@ -44,6 +44,15 @@ function CreateSet() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const hasValidCard = cards.some(
+      (card) => card.term.trim() !== "" && card.definition.trim() !== ""
+    );
+
+    if (!hasValidCard) {
+      console.error("No cards inserted");
+      return;
+    }
+
     try {
       const resSet = await fetch(
         "http://localhost/Quiz-it/backend/sets/create.php",
@@ -57,7 +66,6 @@ function CreateSet() {
       );
 
       const responseSet = await resSet.json();
-      console.log(responseSet.message);
       const set_id = responseSet.set_id;
 
       const promises = cards.map((card) => {
@@ -82,9 +90,12 @@ function CreateSet() {
         { term: "", definition: "" },
         { term: "", definition: "" },
       ]);
-      console.log("All cards created");
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     } catch {
-      console.log("Missing set/cards value (fetching)");
+      console.error("Missing set value (fetching)");
     }
   };
 
@@ -92,7 +103,7 @@ function CreateSet() {
     <div className={styles.pageContainer}>
       <NavBar />
 
-      <BackButton page={"/"}/>
+      <BackButton page={"/"} />
 
       <form onSubmit={handleSubmit}>
         <div className={styles.contentContainer}>

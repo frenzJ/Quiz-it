@@ -5,7 +5,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $set_name = $data['set_name'];
 $description = $data['description'];
 
-if ($set_name && $description) {
+if (!empty($set_name) && !empty($description)) {
 
     $sql = "INSERT INTO sets (set_name, description) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
