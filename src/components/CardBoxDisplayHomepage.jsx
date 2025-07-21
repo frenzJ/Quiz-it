@@ -11,6 +11,7 @@ function CardBoxDisplayHomepage({
       {cards.map((card, index) => (
         <div className={styles.cardBox} key={index}>
           <img
+            draggable={false}
             onClick={() =>
               onClick({ set_id: card.set_id, set_name: card.set_name })
             }

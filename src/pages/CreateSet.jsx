@@ -2,6 +2,7 @@ import styles from "./CreateSet.module.css";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import CardBox from "../components/CardBox";
+import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
 
 function CreateSet() {
@@ -90,6 +91,8 @@ function CreateSet() {
   return (
     <div className={styles.pageContainer}>
       <NavBar />
+
+      <BackButton page={"/"}/>
 
       <form onSubmit={handleSubmit}>
         <div className={styles.contentContainer}>

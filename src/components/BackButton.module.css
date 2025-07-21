@@ -1,0 +1,6 @@
+.backButton {
+  width: 40px;
+  margin: 15px;
+  position: absolute;
+  justify-self: end;
+}
