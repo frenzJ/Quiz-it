@@ -1,31 +1,30 @@
 .cardInputs {
-    min-width: 95%;
-    max-width: 95%;
-    margin: 20px;
-    font-size: 20px;
-    padding: 1%;
-    width: 95%;
-    border-radius: 15px;
-    border: 1px solid hsl(0, 0%, 50%);
-    background-color: hsl(0, 0%, 18%);
-    color: hsl(0, 0%, 100%);
+  min-width: 95%;
+  max-width: 95%;
+  margin: 20px;
+  font-size: 20px;
+  padding: 1%;
+  width: 95%;
+  border-radius: 15px;
+  border: 1px solid hsl(0, 0%, 50%);
+  background-color: hsl(0, 0%, 18%);
+  color: hsl(0, 0%, 100%);
 }
-
 
 .cardBoxContainer {
-    display: grid;
-    margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
-    background-color: hsl(0, 0%, 14%);
-    padding: 2%;
-    border-radius: 15px;
-    position: relative;
+  display: grid;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: hsl(0, 0%, 14%);
+  padding: 2%;
+  border-radius: 15px;
+  position: relative;
 }
 
-.deleteButton{
-    margin: 15px;
-    width: 20px;
-    position: absolute;
-    justify-self: end;
+.deleteButton {
+  margin: 15px;
+  width: 20px;
+  position: absolute;
+  justify-self: end;
 }

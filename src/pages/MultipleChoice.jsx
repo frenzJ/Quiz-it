@@ -1,13 +1,7 @@
 import "./MultipleChoice.module.css";
 
-function MultipleChoice(){
-
-    
-
-    return(
-        <>
-        </>
-    )
+function MultipleChoice() {
+  return <></>;
 }
 
 export default MultipleChoice;

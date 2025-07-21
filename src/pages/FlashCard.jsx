@@ -1,13 +1,7 @@
 import "./FlashCard.module.css";
 
-function FlashCard(){
-
-    
-
-    return(
-        <>
-        </>
-    )
+function FlashCard() {
+  return <></>;
 }
 
 export default FlashCard;

@@ -1,43 +1,43 @@
 .navBar {
-    padding-left: 12%;
-    padding-right: 12%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 11px;
-    background-color: hsl(217, 43%, 24%);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding-left: 12%;
+  padding-right: 12%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 11px;
+  background-color: hsl(217, 43%, 24%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.leftNav, .rightNav {
-    display: flex;
-    align-items: center;
+.leftNav,
+.rightNav {
+  display: flex;
+  align-items: center;
 }
 
 .navBarItems {
-    margin-left: 7px;
-    margin-right: 7px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 .settings {
-    border-radius: 10px;
-    height: 15px;
-    width: 15px;
-    padding: 15px;
-    background-color: hsl(217, 43%, 30%);;
+  border-radius: 10px;
+  height: 15px;
+  width: 15px;
+  padding: 15px;
+  background-color: hsl(217, 43%, 30%);
 }
 
 .mode {
-    border-radius: 10px;
-    height: 15px;
-    width: 15px;
-    padding: 15px;
-    background-color: hsl(217, 43%, 30%);;
+  border-radius: 10px;
+  height: 15px;
+  width: 15px;
+  padding: 15px;
+  background-color: hsl(217, 43%, 30%);
 }
 
 .logo {
-    height: 35px;
-    width: 35px;
+  height: 35px;
+  width: 35px;
 }
-

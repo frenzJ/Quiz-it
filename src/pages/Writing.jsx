@@ -1,13 +1,7 @@
 import "./Writing.module.css";
 
-function Writing(){
-
-    
-
-    return(
-        <>
-        </>
-    )
+function Writing() {
+  return <></>;
 }
 
 export default Writing;

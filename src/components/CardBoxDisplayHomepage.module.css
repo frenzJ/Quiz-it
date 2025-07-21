@@ -1,55 +1,55 @@
-.cardBox{
-    padding: 15px;
-    background-color: hsl(0, 0%, 13%);
-    width: 85%;
-    height: 150px;
-    margin-bottom: 20px;
-    
-    border-radius: 15px;
-    display: grid;
-} 
+.cardBox {
+  padding: 15px;
+  background-color: hsl(0, 0%, 13%);
+  width: 85%;
+  height: 150px;
+  margin-bottom: 20px;
+
+  border-radius: 15px;
+  display: grid;
+}
 
 .cardBox hr {
-    border: none;
-    height: 1px;
-    background-color: hsl(0, 0%, 24%);
-    width: 100%;
-    margin: 5px 0;
+  border: none;
+  height: 1px;
+  background-color: hsl(0, 0%, 24%);
+  width: 100%;
+  margin: 5px 0;
 }
 
 .cardName {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .cardDescription {
-    font-weight: lighter;
-    color: hsl(0, 0%, 49%);
-    font-size: 15px;
+  font-weight: lighter;
+  color: hsl(0, 0%, 49%);
+  font-size: 15px;
 }
 
 .deleteButtonDisplay {
-    width: 20px;
-    position: absolute;
-    justify-self: end;
+  width: 20px;
+  position: absolute;
+  justify-self: end;
 }
 
 .footerCardContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footerCard {
-    margin-right: 5px;
-    margin-left: 5px;
-    font-size: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 10px;
 }
 
 .cardLayerLogo {
-    height: 15px;
-    width: 15px;
+  height: 15px;
+  width: 15px;
 }
 
 .footerSubCardContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

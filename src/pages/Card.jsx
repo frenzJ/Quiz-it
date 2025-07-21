@@ -1,13 +1,7 @@
 import "./Card.module.css";
 
-function Card(){
-
-    
-
-    return(
-        <>
-        </>
-    )
+function Card() {
+  return <></>;
 }
 
 export default Card;
