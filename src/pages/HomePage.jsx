@@ -18,6 +18,13 @@ function HomePage() {
     navigate("/CreateSet");
   };
 
+  const handleNavigateSet = (card) => {
+    console.log(card);
+    navigate("/Card", {
+      state: card,
+    });
+  };
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -61,8 +68,8 @@ function HomePage() {
         }
       );
 
-      const responeDelete = await resDelete.json();
-      console.log(responeDelete.message);
+      const responseDelete = await resDelete.json();
+      console.log(responseDelete.message);
     } catch (error) {
       console.error("Problem in fetching set:", error);
     }
@@ -92,6 +99,7 @@ function HomePage() {
 
           <div className={styles.cardContainer}>
             <CardBoxDisplayHomepage
+              navigate={handleNavigateSet}
               cards={cards}
               onClick={handleClickDelete}
               totalCardsPerSet={totalCardsPerSet}

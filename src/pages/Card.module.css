@@ -1,0 +1,47 @@
+.setNameBox {
+  background-color: hsl(0, 0%, 10%);
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 70px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.studyButton {
+  border: none;
+  background-color: hsl(207, 100%, 50%);
+  color: hsl(0, 0%, 100%);
+  margin: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px 22%;
+  border-radius: 15px;
+}
+
+.addEditButton {
+  border: none;
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 100%);
+  margin: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px 22%;
+  border-radius: 15px;
+  white-space: nowrap;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  margin: 30px 100px 100px;
+  gap: 30px;
+}

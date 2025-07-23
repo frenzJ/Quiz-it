@@ -11,7 +11,7 @@
   color: hsl(0, 0%, 100%);
 }
 
-.cardBoxContainer {
+.cardBoxCreateSetContainer {
   display: grid;
   margin-top: 5%;
   margin-left: 10%;

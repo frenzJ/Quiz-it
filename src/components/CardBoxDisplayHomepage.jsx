@@ -5,16 +5,22 @@ function CardBoxDisplayHomepage({
   cards = [],
   totalCardsPerSet = [],
   onClick,
+  navigate,
 }) {
   return (
     <>
       {cards.map((card, index) => (
-        <div className={styles.cardBox} key={index}>
+        <div
+          onClick={() => navigate(card)}
+          className={styles.cardBox}
+          key={index}
+        >
           <img
             draggable={false}
-            onClick={() =>
-              onClick({ set_id: card.set_id, set_name: card.set_name })
-            }
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick({ set_id: card.set_id, set_name: card.set_name });
+            }}
             className={styles.deleteButtonDisplay}
             src="/assets/delete1.png"
             alt="Delete"
@@ -54,6 +60,7 @@ CardBoxDisplayHomepage.propTypes = {
   ),
   totalCardsPerSet: PropTypes.arrayOf(PropTypes.number),
   onClick: PropTypes.func,
+  navigate: PropTypes.func,
 };
 
 export default CardBoxDisplayHomepage;

@@ -1,9 +1,10 @@
 import styles from "./CreateSet.module.css";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-import CardBox from "../components/CardBox";
+import CardBoxCreateSet from "../components/CardBoxCreateSet";
 import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateSet() {
   const [cardSet, setCardSet] = useState({ set_name: "", description: "" });
@@ -12,6 +13,8 @@ function CreateSet() {
     { term: "", definition: "" },
     { term: "", definition: "" },
   ]);
+
+  const navigate = useNavigate();
 
   const handleAddCard = () => {
     setCards((prevCards) => [...prevCards, { term: "", definition: "" }]);
@@ -41,6 +44,12 @@ function CreateSet() {
     }
   }, [cards.length]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -69,7 +78,7 @@ function CreateSet() {
       const set_id = responseSet.set_id;
 
       const promises = cards.map((card) => {
-        fetch("http://localhost/Quiz-it/backend/cards/create.php", {
+        return fetch("http://localhost/Quiz-it/backend/cards/create.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -84,16 +93,26 @@ function CreateSet() {
 
       await Promise.all(promises);
 
+      const noEmptyCards = cards.filter(
+        (card) => card.term.trim() != "" && card.definition.trim() != ""
+      );
+
+      setCards();
+
+      navigate("/Card", {
+        state: {
+          set_name: cardSet.set_name,
+          description: cardSet.description,
+          cards: noEmptyCards,
+        },
+      });
+
       setCardSet({ set_name: "", description: "" });
       setCards([
         { term: "", definition: "" },
         { term: "", definition: "" },
         { term: "", definition: "" },
       ]);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
     } catch {
       console.error("Missing set value (fetching)");
     }
@@ -133,7 +152,7 @@ function CreateSet() {
 
           <SearchBar />
 
-          <CardBox
+          <CardBoxCreateSet
             cards={cards}
             onChange={handleChangeCard}
             onClick={handleDeleteCard}

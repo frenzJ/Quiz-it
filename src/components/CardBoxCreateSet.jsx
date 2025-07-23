@@ -1,10 +1,10 @@
-import styles from "./CardBox.module.css";
+import styles from "./CardBoxCreateSet.module.css";
 
-function CardBox({ cards, onChange, onClick }) {
+function CardBoxCreateSet({ cards, onChange, onClick }) {
   return (
     <>
       {cards.map((card, index) => (
-        <div className={styles.cardBoxContainer} key={index}>
+        <div className={styles.cardBoxCreateSetContainer} key={index}>
           <img
             className={styles.deleteButton}
             draggable="false"
@@ -34,4 +34,4 @@ function CardBox({ cards, onChange, onClick }) {
   );
 }
 
-export default CardBox;
+export default CardBoxCreateSet;

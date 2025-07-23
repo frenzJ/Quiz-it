@@ -61,7 +61,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  margin: 30px 100px 0 100px;
+  margin: 50px 100px 0px 100px;
 }
 
 .deletePopupContainer {
