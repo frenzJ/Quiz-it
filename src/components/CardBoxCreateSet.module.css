@@ -1,14 +1,16 @@
 .cardInputs {
-  min-width: 95%;
-  max-width: 95%;
+  resize: none;
   margin: 20px;
   font-size: 20px;
   padding: 1%;
-  width: 95%;
   border-radius: 15px;
   border: 1px solid hsl(0, 0%, 50%);
   background-color: hsl(0, 0%, 18%);
   color: hsl(0, 0%, 100%);
+}
+
+.cardInputs:hover {
+  border: 1px solid hsl(0, 0%, 100%);
 }
 
 .cardBoxCreateSetContainer {
@@ -20,6 +22,11 @@
   padding: 2%;
   border-radius: 15px;
   position: relative;
+  transition: transform 0.3s ease;
+}
+
+.cardBoxCreateSetContainer:hover {
+  transform: translateY(-2px);
 }
 
 .deleteButton {
@@ -27,4 +34,9 @@
   width: 20px;
   position: absolute;
   justify-self: end;
+  transition: filter 0.3s ease;
+}
+
+.deleteButton:hover {
+  filter: brightness(150%);
 }

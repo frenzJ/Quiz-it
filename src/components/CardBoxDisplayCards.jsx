@@ -6,8 +6,8 @@ function CardBoxDisplayCards({ cards = [] }) {
     <>
       {cards.map((card, index) => (
         <div key={index} className={styles.cardBox}>
-          <h1>{card.term}</h1>
-          <p>{card.definition}</p>
+          <h1 className={styles.termText}>{card.term}</h1>
+          <p className={styles.definitionText}>{card.definition}</p>
         </div>
       ))}
     </>

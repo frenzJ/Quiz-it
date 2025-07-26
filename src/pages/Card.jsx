@@ -19,8 +19,9 @@ function Card() {
       <NavBar />
       <BackButton page={"/"} />
       <div className={styles.setNameBox}>
-        <h1>{set_name}</h1>
-        <p>{description}</p>
+        <h1 className={styles.setNameText}>{set_name}</h1>
+        <hr />
+        <p className={styles.setDescriptionBox}>{description}</p>
       </div>
 
       <div className={styles.buttonContainer}>

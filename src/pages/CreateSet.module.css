@@ -6,6 +6,10 @@
   color: hsl(0, 0%, 100%);
 }
 
+.inputs:hover {
+  border: 1px solid hsl(0, 0%, 100%);
+}
+
 .setNameInput {
   min-width: 95%;
   max-width: 95%;
@@ -29,6 +33,11 @@
   background-color: hsl(0, 0%, 14%);
   padding: 2%;
   border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.createSetContainer:hover {
+  transform: translateY(-2px);
 }
 
 .addButton {
@@ -50,11 +59,25 @@
   border: solid 3px hsl(207, 100%, 50%);
   background-color: transparent;
   cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.addCardButton:hover {
+  transform: translateY(-2px);
+  border: solid 3px hsl(207, 100%, 50%);
+  background-color: hsl(207, 100%, 50%);
 }
 
 .doneCardButton {
   border: solid 3px hsl(207, 100%, 50%);
   cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.doneCardButton:hover {
+  transform: translateY(-2px);
+    border: hsl(207, 100%, 35%);
+    background-color: hsl(207, 100%, 35%);
 }
 
 .addCardContainer {

@@ -25,8 +25,8 @@ function CardBoxDisplayHomepage({
             src="/assets/delete1.png"
             alt="Delete"
           />
-          <h1 className={styles.cardName}>{card.set_name}</h1>
-          <h1 className={styles.cardDescription}>{card.description}</h1>
+          <h1 className={styles.cardName}>{card.set_name.substring(0, 20)}</h1>
+          <h1 className={styles.cardDescription}>{card.description.substring(0, 40)}</h1>
           <hr />
           <div className={styles.footerCardContainer}>
             <p className={`${styles.footerCard} ${styles.date}`}>

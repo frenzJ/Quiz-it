@@ -3,7 +3,13 @@
   margin: 15px;
   position: absolute;
   justify-self: end;
-  background-color: hsl(0, 0%, 25%);
+  background-color: hsl(0, 0%, 10%);
   border-radius: 10px;
   padding: 5px;
+  transition: 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: hsl(0, 0%, 15%);
+  width: 42px;
 }

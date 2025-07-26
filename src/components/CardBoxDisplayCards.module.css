@@ -4,6 +4,25 @@
   align-items: flex-start;
   background-color: hsl(0, 0%, 10%);
   padding: 20px;
-  width: 93%;
+  width: 85%;
   border-radius: 10px;
+  overflow: hidden;
+  word-wrap: break-word;        
+  overflow-wrap: break-word;    
+  word-break: break-word;
+  transition: transform 0.2s ease;
+}
+
+.cardBox:hover {
+  transform: translateY(-2px);
+}
+
+.termText {
+  font-weight: bolder;
+  margin: 0px 0px 10px 0px;
+}
+
+.definitionText {
+  margin: 0px 0px 10px 0px;
+  color: hsl(0, 0%, 90%);
 }

@@ -124,18 +124,18 @@ function HomePage() {
               <div className={styles.deletePopupBox}>
                 <h1 className={styles.deleteSetText1}>Delete Set</h1>
                 <p className={styles.deleteSetText2}>
-                  Are you sure you want to delete "{itemToDeleteName}"? <br />
+                  Are you sure you want to delete "{itemToDeleteName.substring(0, 40)}"? <br />
                   This action cannot be undone.
                 </p>
                 <div>
                   <button
-                    className={`${styles.deleteButton} ${styles.cancelDeleteButton}`}
+                    className={`${styles.deleteButtons} ${styles.cancelDeleteButton}`}
                     onClick={cancelDelete}
                   >
                     Cancel
                   </button>
                   <button
-                    className={`${styles.deleteButton} ${styles.deleteSetButton}`}
+                    className={`${styles.deleteButtons} ${styles.deleteSetButton}`}
                     onClick={confirmDelete}
                   >
                     Delete

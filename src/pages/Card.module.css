@@ -3,9 +3,38 @@
   margin-left: 10%;
   margin-right: 10%;
   margin-top: 70px;
-  padding: 20px;
+  padding: 35px;
   border-radius: 20px;
+  overflow: hidden;
+  word-wrap: break-word;        
+  overflow-wrap: break-word;
+  transition: transform 0.2s ease;
 }
+
+.setNameBox:hover {
+  transform: translateY(-2px);
+}
+
+.setNameText {
+  font-weight: 900;
+  font-family: sans-serif;
+  margin: 0 0 15px 0;
+}
+
+.setDescriptionBox {
+  margin: 0 0 10px 0;
+}
+
+.setNameBox hr {
+  height: 4px;
+  background-color: hsl(207, 100%, 50%);
+  width: 50px;
+  margin-left: 0;   
+  margin-right: auto; 
+  border: none;
+  border-radius: 10px;
+}
+
 
 .buttonContainer {
   display: flex;
@@ -16,26 +45,38 @@
 }
 
 .studyButton {
-  border: none;
+  border: solid 1px hsl(207, 100%, 50%);
   background-color: hsl(207, 100%, 50%);
   color: hsl(0, 0%, 100%);
   margin: 15px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold;
-  padding: 20px 22%;
+  padding: 20px 19%;
   border-radius: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.studyButton:hover {
+  transform: translateY(-3px);
+  background-color: hsl(207, 100%, 40%);
 }
 
 .addEditButton {
-  border: none;
+  border: solid 1px hsl(0, 0%, 10%);
   background-color: hsl(0, 0%, 10%);
   color: hsl(0, 0%, 100%);
   margin: 15px;
   font-size: 18px;
   font-weight: bold;
-  padding: 20px 22%;
+  padding: 20px 19%;
   border-radius: 15px;
   white-space: nowrap;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.addEditButton:hover {
+  transform: translateY(-3px);
+  border: solid 1px hsl(207, 100%, 50%);
 }
 
 .cardsContainer {
