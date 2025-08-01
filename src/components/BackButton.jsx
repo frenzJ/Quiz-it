@@ -2,11 +2,11 @@ import styles from "./BackButton.module.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-function BackButton({page}) {
+function BackButton({ page }) {
   const navigate = useNavigate();
   const goToPage = () => {
-    navigate(page)
-  }
+    navigate(page);
+  };
 
   return (
     <img
@@ -19,7 +19,7 @@ function BackButton({page}) {
 }
 
 BackButton.propTypes = {
-  page: PropTypes.string
-}
+  page: PropTypes.string,
+};
 
 export default BackButton;

@@ -9,15 +9,15 @@ import { useNavigate } from "react-router-dom";
 function CreateSet() {
   const [cardSet, setCardSet] = useState({ set_name: "", description: "" });
   const [cards, setCards] = useState([
-    { term: "", definition: "" },
-    { term: "", definition: "" },
-    { term: "", definition: "" },
+    { card_id: "", term: "", definition: "" },
+    { card_id: "", term: "", definition: "" },
+    { card_id: "", term: "", definition: "" },
   ]);
 
   const navigate = useNavigate();
 
   const handleAddCard = () => {
-    setCards((prevCards) => [...prevCards, { term: "", definition: "" }]);
+    setCards((prevCards) => [...prevCards, { card_id: "", term: "", definition: "" }]);
   };
 
   function handleChangeSet(e) {
@@ -101,6 +101,7 @@ function CreateSet() {
 
       navigate("/Card", {
         state: {
+          set_id: set_id,
           set_name: cardSet.set_name,
           description: cardSet.description,
           cards: noEmptyCards,

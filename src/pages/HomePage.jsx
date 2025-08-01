@@ -19,7 +19,6 @@ function HomePage() {
   };
 
   const handleNavigateSet = (card) => {
-    console.log(card);
     navigate("/Card", {
       state: card,
     });

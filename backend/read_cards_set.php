@@ -2,7 +2,7 @@
 require './db.php';
 $results = [];
 
-$sql = "SELECT sets.set_id, sets.set_name, sets.description, sets.set_date, cards.term, cards.definition
+$sql = "SELECT sets.set_id, sets.set_name, sets.description, sets.set_date, cards.card_id, cards.term, cards.definition
             FROM sets
             LEFT JOIN cards ON sets.set_id = cards.set_id
             ORDER BY sets.set_id ASC";
@@ -24,6 +24,7 @@ if ($cards->num_rows > 0) {
 
         if($cardRow['term'] !== null) {
             $results[$set_id]['cards'][] = [
+            "card_id" => $cardRow['card_id'],
             "term" => $cardRow['term'],
             "definition" => $cardRow['definition']
             ];
