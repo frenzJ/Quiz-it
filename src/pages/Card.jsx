@@ -9,12 +9,15 @@ import BackButton from "../components/BackButton";
 function Card() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [cardSet, setCardSet] = useState({})
-  const [cards, setCards] = useState([])
-  
+
+  const [cardSet, setCardSet] = useState({});
+  const [cards, setCards] = useState([]);
 
   const { set_id } = location.state || {};
 
+  /**
+   * Fetches set information and its associated cards from the backend.
+   */
   const fetchData = async () => {
     try {
       const responseSet = await fetch("http://localhost/Quiz-it/backend/sets/read.php", {
@@ -22,13 +25,14 @@ function Card() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({set_id}),
+        body: JSON.stringify({ set_id }),
       });
 
       const resultCardSet = await responseSet.json();
-      setCardSet(resultCardSet)
+      setCardSet(resultCardSet);
+      console.log(resultCardSet.message);
     } catch {
-      console.error("Problem in fetching set (set_id)")
+      console.error("Problem in fetching set (set_id)");
     }
 
     try {
@@ -37,31 +41,37 @@ function Card() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({set_id}),
+        body: JSON.stringify({ set_id }),
       });
 
       const dataCard = await responseCard.json();
-      setCards(dataCard.cards)
+      setCards(dataCard.cards);
+      console.log(dataCard.message);
     } catch {
-      console.error("Problem in fetching card (set_id)")
+      console.error("Problem in fetching card (set_id)");
     }
-  }
+  };
 
+  // Fetch data on component mount
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
+  /**
+   * Navigates to the AddEditCards page with current set and card data.
+   */
   const GoToAddEditCards = () => {
     navigate("/AddEditCards", {
       state: {
         set_id: cardSet.set_id,
         set_name: cardSet.set_name,
         description: cardSet.description,
-        cards
-      }
+        cards,
+      },
     });
   };
 
+  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({
       top: 0,

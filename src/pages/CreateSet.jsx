@@ -9,32 +9,50 @@ import { useNavigate } from "react-router-dom";
 function CreateSet() {
   const [cardSet, setCardSet] = useState({ set_name: "", description: "" });
   const [cards, setCards] = useState([
-    { card_id: "", term: "", definition: "" },
-    { card_id: "", term: "", definition: "" },
-    { card_id: "", term: "", definition: "" },
+    { term: "", definition: "" },
+    { term: "", definition: "" },
+    { term: "", definition: "" },
   ]);
 
   const navigate = useNavigate();
 
+  /**
+   * Adds an empty card object to the list of cards.
+   */
   const handleAddCard = () => {
     setCards((prevCards) => [...prevCards, { card_id: "", term: "", definition: "" }]);
   };
 
+  /**
+   * Handles changes to the set name or description.
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} e - The input change event.
+   */
   function handleChangeSet(e) {
     setCardSet({ ...cardSet, [e.target.name]: e.target.value });
   }
 
+  /**
+   * Handles changes to a specific card's term or definition.
+   * @param {number} index - Index of the card being updated.
+   * @param {"term" | "definition"} field - Field to update.
+   * @param {string} value - New value to apply.
+   */
   const handleChangeCard = (index, field, value) => {
     const updatedCards = [...cards];
     updatedCards[index][field] = value;
     setCards(updatedCards);
   };
 
+  /**
+   * Removes a card at the specified index from the card list.
+   * @param {number} index - Index of the card to remove.
+   */
   const handleDeleteCard = (index) => {
     const filteredCard = cards.filter((_, i) => i !== index);
     setCards(filteredCard);
   };
 
+  // Scroll to bottom when more than 3 cards exist (assumes cards are added)
   useEffect(() => {
     if (cards.length > 3) {
       window.scrollTo({
@@ -44,12 +62,20 @@ function CreateSet() {
     }
   }, [cards.length]);
 
+  // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
   }, []);
 
+  /**
+   * Submits the new set and its cards to the backend.
+   * - Creates the set.
+   * - Creates each card that has valid content.
+   * - Navigates to the Card view page after creation.
+   * @param {React.FormEvent<HTMLFormElement>} e - Form submit event.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -94,11 +120,10 @@ function CreateSet() {
       await Promise.all(promises);
 
       const noEmptyCards = cards.filter(
-        (card) => card.term.trim() != "" && card.definition.trim() != ""
+        (card) => card.term.trim() !== "" && card.definition.trim() !== ""
       );
 
-      setCards();
-
+      // Navigate to the Card page
       navigate("/Card", {
         state: {
           set_id: set_id,
@@ -108,6 +133,7 @@ function CreateSet() {
         },
       });
 
+      // Reset form
       setCardSet({ set_name: "", description: "" });
       setCards([
         { term: "", definition: "" },

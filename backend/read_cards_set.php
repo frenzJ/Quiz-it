@@ -42,3 +42,5 @@ if ($cards->num_rows > 0) {
         'totalCardsPerSet' => $totalCardsPerSet
     ]);
 }
+
+$conn->close();

@@ -1,4 +1,25 @@
 <?php
+/**
+ * Creates a new card set in the database.
+ * 
+ * Expects a JSON payload via POST with the following fields:
+ * - set_name (string): The name of the set
+ * - description (string): A short description of the set
+ * 
+ * On success, returns a JSON response:
+ * {
+ *   "status": "success",
+ *   "message": "Set created successfully.",
+ *   "set_id": <ID of the newly created set>
+ * }
+ * 
+ * On failure returns a JSON response:
+ * {
+ *   "status": "error",
+ *   "message": "Failed to create set."
+ * }
+ */
+
 require '../db.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -6,7 +27,6 @@ $set_name = $data['set_name'];
 $description = $data['description'];
 
 if (!empty($set_name) && !empty($description)) {
-
     $sql = "INSERT INTO sets (set_name, description) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
     $stmt->bind_param("ss", $set_name, $description);
@@ -17,7 +37,14 @@ if (!empty($set_name) && !empty($description)) {
             "message" => "Set created successfully.",
             "set_id" => $conn->insert_id
         ]);
+    } else {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Failed to create set."
+        ]);
     }
 }
 
+$stmt->close();
 $conn->close();
+
