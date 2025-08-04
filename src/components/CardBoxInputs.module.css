@@ -13,7 +13,7 @@
   border: 1px solid hsl(0, 0%, 100%);
 }
 
-.cardBoxCreateSetContainer {
+.cardBoxContainer {
   display: grid;
   margin-top: 5%;
   margin-left: 10%;
@@ -25,7 +25,7 @@
   transition: transform 0.3s ease;
 }
 
-.cardBoxCreateSetContainer:hover {
+.cardBoxContainer:hover {
   transform: translateY(-2px);
 }
 

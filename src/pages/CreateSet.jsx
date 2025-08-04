@@ -1,7 +1,7 @@
 import styles from "./CreateSet.module.css";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-import CardBoxCreateSet from "../components/CardBoxCreateSet";
+import CardBoxInputs from "../components/CardBoxInputs";
 import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -179,7 +179,7 @@ function CreateSet() {
 
           <SearchBar />
 
-          <CardBoxCreateSet
+          <CardBoxInputs
             cards={cards}
             onChange={handleChangeCard}
             onClick={handleDeleteCard}

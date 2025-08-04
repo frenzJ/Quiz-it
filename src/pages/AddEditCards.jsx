@@ -1,7 +1,7 @@
 import styles from "./AddEditCards.module.css";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-import CardBoxCreateSet from "../components/CardBoxCreateSet";
+import CardBoxInputs from "../components/CardBoxInputs";
 import BackButton from "../components/BackButton";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -205,7 +205,7 @@ function AddEditCards() {
           <SearchBar />
 
           {/* Card input boxes */}
-          <CardBoxCreateSet
+          <CardBoxInputs
             cards={newCards}
             onChange={handleChangeCard}
             onClick={handleDeleteCard}
