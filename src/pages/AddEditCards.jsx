@@ -145,7 +145,7 @@ function AddEditCards() {
         );
       });
 
-      const cardDeletePromises = deletedCards.map( async(card) => 
+      const cardDeletePromises = deletedCards.map(async (card) => 
         await fetch("http://localhost/Quiz-it/backend/cards/specific_delete.php", {
         method: "POST",
         headers: {

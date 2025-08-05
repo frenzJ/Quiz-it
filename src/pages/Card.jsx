@@ -12,6 +12,7 @@ function Card() {
 
   const [cardSet, setCardSet] = useState({});
   const [cards, setCards] = useState([]);
+  const [activeTab, setActiveTab] = useState("")
 
   const { set_id } = location.state || {};
 
@@ -94,6 +95,13 @@ function Card() {
           Add/Edit Cards
         </button>
       </div>
+
+      <div className={styles.cardBar}>
+        <button onClick={() => setActiveTab("all")} className={`${styles.cardStatus} ${activeTab === "all" ? styles.active : ""}`}>All ()</button>
+        <button onClick={() => setActiveTab("memorized")} className={`${styles.cardStatus} ${activeTab === "memorized" ? styles.active : ""}`}>Memorized ()</button>
+        <button onClick={() => setActiveTab("not memorized")} className={`${styles.cardStatus} ${activeTab === "not memorized" ? styles.active : ""}`}>Not Memorized ()</button>
+      </div>
+
 
       <SearchBar />
 
