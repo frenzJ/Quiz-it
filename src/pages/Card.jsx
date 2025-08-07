@@ -117,7 +117,7 @@ function Card() {
         </button>
       </div>
 
-      <div className={styles.cardBar}>
+      <div className={styles.cardBarStatus}>
         <button
           onClick={() => {
             setActiveTab("all")}

@@ -57,6 +57,7 @@
 }
 
 .studyButton:hover {
+  cursor: pointer;
   transform: translateY(-3px);
   background-color: hsl(207, 100%, 40%);
 }
@@ -75,6 +76,7 @@
 }
 
 .addEditButton:hover {
+  cursor: pointer;
   transform: translateY(-3px);
   border: solid 1px hsl(207, 100%, 50%);
 }
@@ -87,23 +89,29 @@
   gap: 30px;
 }
 
-.cardBar {
+.cardBarStatus {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: hsl(0, 0%, 10%);
   padding: 20px;
-  margin: 15px 8% 0% 8%;
+  margin: 15px 8.5% 0% 8.5%;
   border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.cardBarStatus:hover {
+  transform: translateY(-3px);
 }
 
 .cardStatus {
+  margin: 0px 1% 0px 1%;
   background: transparent;
   padding: 10px 2%;
   border: 1px solid transparent;
   border-radius: 15px;
   color: hsl(0, 0%, 70%);
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .cardStatus:hover {

@@ -10,6 +10,7 @@
 }
 
 .backButton:hover {
+  cursor: pointer;
   background-color: hsl(0, 0%, 15%);
   width: 42px;
 }
