@@ -12,7 +12,7 @@ function Card() {
 
   const [cardSet, setCardSet] = useState({});
   const [cards, setCards] = useState([]);
-  const [activeTab, setActiveTab] = useState("")
+  const [activeTab, setActiveTab] = useState("all");
 
   const { set_id } = location.state || {};
 
@@ -21,13 +21,16 @@ function Card() {
    */
   const fetchData = async () => {
     try {
-      const responseSet = await fetch("http://localhost/Quiz-it/backend/sets/read.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ set_id }),
-      });
+      const responseSet = await fetch(
+        "http://localhost/Quiz-it/backend/sets/read.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ set_id }),
+        }
+      );
 
       const resultCardSet = await responseSet.json();
       setCardSet(resultCardSet);
@@ -37,13 +40,16 @@ function Card() {
     }
 
     try {
-      const responseCard = await fetch("http://localhost/Quiz-it/backend/cards/read.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ set_id }),
-      });
+      const responseCard = await fetch(
+        "http://localhost/Quiz-it/backend/cards/read.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ set_id }),
+        }
+      );
 
       const dataCard = await responseCard.json();
       setCards(dataCard.cards);
@@ -52,6 +58,21 @@ function Card() {
       console.error("Problem in fetching card (set_id)");
     }
   };
+
+  //Filter cards
+  const filteredCards = cards.filter(card => {
+    if(activeTab === "all"){
+      return card
+    } else if (activeTab === "memorized") {
+      return card.memorize === 1
+    } else if (activeTab === "not memorize") {
+      return card.memorize === 0
+    }
+  })
+
+  const totalCards = cards.length;
+  const totalMemorizedCards = cards.filter(card => {return card.memorize === 1}).length;
+  const totalNotMemorizedCards = cards.filter(card => {return card.memorize === 0}).length;
 
   // Fetch data on component mount
   useEffect(() => {
@@ -97,16 +118,38 @@ function Card() {
       </div>
 
       <div className={styles.cardBar}>
-        <button onClick={() => setActiveTab("all")} className={`${styles.cardStatus} ${activeTab === "all" ? styles.active : ""}`}>All ()</button>
-        <button onClick={() => setActiveTab("memorized")} className={`${styles.cardStatus} ${activeTab === "memorized" ? styles.active : ""}`}>Memorized ()</button>
-        <button onClick={() => setActiveTab("not memorized")} className={`${styles.cardStatus} ${activeTab === "not memorized" ? styles.active : ""}`}>Not Memorized ()</button>
+        <button
+          onClick={() => {
+            setActiveTab("all")}
+          }
+          className={`${styles.cardStatus} ${
+            activeTab === "all" ? styles.active : ""
+          }`}
+        >
+          All ({totalCards})
+        </button>
+        <button
+          onClick={() => setActiveTab("memorized")}
+          className={`${styles.cardStatus} ${
+            activeTab === "memorized" ? styles.active : ""
+          }`}
+        >
+          Memorized ({totalMemorizedCards})
+        </button>
+        <button
+          onClick={() => setActiveTab("not memorize")}
+          className={`${styles.cardStatus} ${
+            activeTab === "not memorize" ? styles.active : ""
+          }`}
+        >
+          Not Memorized ({totalNotMemorizedCards})
+        </button>
       </div>
-
 
       <SearchBar />
 
       <div className={styles.cardsContainer}>
-        <CardBoxDisplayCards cards={cards} />
+        <CardBoxDisplayCards cards={filteredCards} />
       </div>
     </>
   );

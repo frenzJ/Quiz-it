@@ -34,7 +34,7 @@ $set_id = $data['set_id'];
 
 $sql = "SELECT * FROM cards WHERE set_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
-$stmt->bind_param("s", $set_id);
+$stmt->bind_param("i", $set_id);
 
 if ($stmt->execute()) {
   $result = $stmt->get_result();
@@ -46,6 +46,7 @@ if ($stmt->execute()) {
     $card->card_id = $row['card_id'];
     $card->term = $row['term'];
     $card->definition = $row['definition'];
+    $card->memorize = $row['memorize'];
     $cards[] = $card; 
   }
 
