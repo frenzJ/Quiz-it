@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Updates a card's term and definition based on the given card ID.
  * 
@@ -33,14 +34,10 @@ $stmt = mysqli_prepare($conn, $sql);
 $stmt->bind_param("ssi", $term, $definition, $card_id);
 
 if ($stmt->execute()) {
-  echo json_encode(["message" => "Card updated"]);
+    echo json_encode(["message" => "Card updated"]);
 } else {
-  echo json_encode(["message" => "Card error update"]);
+    echo json_encode(["message" => "Card error update"]);
 }
 
 $stmt->close();
 $conn->close();
-
-
-
-

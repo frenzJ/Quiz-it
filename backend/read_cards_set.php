@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This script fetches all sets and their associated cards from the database.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Updates the name and description of a specific card set in the database.
  * 
@@ -31,12 +32,10 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssi", $set_name, $description, $set_id);
 
 if ($stmt->execute()) {
-  echo json_encode(["message" => "Set updated"]);
+    echo json_encode(["message" => "Set updated"]);
 } else {
-  echo json_encode(["message" => "Set error update"]);
+    echo json_encode(["message" => "Set error update"]);
 }
 
 $stmt->close();
 $conn->close();
-
-

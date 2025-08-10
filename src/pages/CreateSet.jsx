@@ -20,7 +20,10 @@ function CreateSet() {
    * Adds an empty card object to the list of cards.
    */
   const handleAddCard = () => {
-    setCards((prevCards) => [...prevCards, { card_id: "", term: "", definition: "" }]);
+    setCards((prevCards) => [
+      ...prevCards,
+      { card_id: "", term: "", definition: "" },
+    ]);
   };
 
   /**

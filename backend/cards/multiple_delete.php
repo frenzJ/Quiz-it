@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Deletes all cards associated with a specific set ID from the database.
  * 
@@ -26,11 +27,11 @@ $stmt = mysqli_prepare($conn, $sql);
 $stmt->bind_param("i", $setIdToDelete);
 
 if ($stmt->execute()) {
-  echo json_encode(["message" => "Cards deleted successfully"]);
-  exit;
+    echo json_encode(["message" => "Cards deleted successfully"]);
+    exit;
 } else {
-  echo json_encode(["message" => "Cards deleted unsuccessfully"]);
-  exit;
+    echo json_encode(["message" => "Cards deleted unsuccessfully"]);
+    exit;
 }
 
 $stmt->close();

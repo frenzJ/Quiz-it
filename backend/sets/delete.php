@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Deletes a card set from the database based on the given set ID.
  * 
@@ -35,4 +36,3 @@ if ($stmt->execute()) {
 
 $stmt->close();
 $conn->close();
-

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Creates a new card set in the database.
  * 
@@ -47,4 +48,3 @@ if (!empty($set_name) && !empty($description)) {
 
 $stmt->close();
 $conn->close();
-

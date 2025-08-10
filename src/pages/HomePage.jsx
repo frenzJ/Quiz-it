@@ -110,7 +110,6 @@ function HomePage() {
       );
       const responseDeleteSet = await resDeleteSet.json();
       console.log(responseDeleteSet.message);
-
     } catch (error) {
       console.error("Problem in fetching set:", error);
     }
@@ -176,7 +175,8 @@ function HomePage() {
               <div className={styles.deletePopupBox}>
                 <h1 className={styles.deleteSetText1}>Delete Set</h1>
                 <p className={styles.deleteSetText2}>
-                  Are you sure you want to delete "{itemToDeleteName.substring(0, 40)}"? <br />
+                  Are you sure you want to delete "
+                  {itemToDeleteName.substring(0, 40)}"? <br />
                   This action cannot be undone.
                 </p>
                 <div>

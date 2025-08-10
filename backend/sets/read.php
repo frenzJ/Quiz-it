@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Retrieves a specific card set's details from the database using its set ID.
  * 
@@ -31,31 +32,27 @@ $stmt = mysqli_prepare($conn, $sql);
 $stmt->bind_param("s", $set_id);
 
 if ($stmt->execute()) {
-  $result = $stmt->get_result();
+    $result = $stmt->get_result();
 
-  while ($resultRow = $result->fetch_assoc()) {
-    $set_id = $resultRow['set_id'];
-    $set_name = $resultRow['set_name'];
-    $description = $resultRow['description'];
-  }
+    while ($resultRow = $result->fetch_assoc()) {
+        $set_id = $resultRow['set_id'];
+        $set_name = $resultRow['set_name'];
+        $description = $resultRow['description'];
+    }
 
-  echo json_encode([
-    "status" => "success",
-    "message" => "Set read successfully.",
-    "set_id" => $set_id,
-    "set_name" => $set_name,
-    "description" => $description
-  ]);
+    echo json_encode([
+        "status" => "success",
+        "message" => "Set read successfully.",
+        "set_id" => $set_id,
+        "set_name" => $set_name,
+        "description" => $description
+    ]);
 } else {
-  echo json_encode([
-    "status" => "error",
-    "message" => "Database read set failed: " . $stmt->error
-  ]);
+    echo json_encode([
+        "status" => "error",
+        "message" => "Database read set failed: " . $stmt->error
+    ]);
 }
 
 $stmt->close();
 $conn->close();
-
-  
-  
-  

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Deletes all cards associated with a specific card ID from the database.
  * 

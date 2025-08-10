@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Retrieves all cards associated with a specific set ID from the database.
  * 
@@ -37,39 +38,30 @@ $stmt = mysqli_prepare($conn, $sql);
 $stmt->bind_param("i", $set_id);
 
 if ($stmt->execute()) {
-  $result = $stmt->get_result();
-  $cards = []; 
+    $result = $stmt->get_result();
+    $cards = [];
 
-  while ($row = $result->fetch_assoc()) {
-    $card = new stdClass();
-    $card->set_id = $row['set_id'];
-    $card->card_id = $row['card_id'];
-    $card->term = $row['term'];
-    $card->definition = $row['definition'];
-    $card->memorize = $row['memorize'];
-    $cards[] = $card; 
-  }
+    while ($row = $result->fetch_assoc()) {
+        $card = new stdClass();
+        $card->set_id = $row['set_id'];
+        $card->card_id = $row['card_id'];
+        $card->term = $row['term'];
+        $card->definition = $row['definition'];
+        $card->memorize = $row['memorize'];
+        $cards[] = $card;
+    }
 
-  echo json_encode([
-    "status" => "success",
-    "message" => "Cards read successfully.",
-    "cards" => $cards
-  ]);
+    echo json_encode([
+        "status" => "success",
+        "message" => "Cards read successfully.",
+        "cards" => $cards
+    ]);
 } else {
-  echo json_encode([
-    "status" => "error",
-    "message" => "Database read failed: " . $stmt->error
-  ]);
+    echo json_encode([
+        "status" => "error",
+        "message" => "Database read failed: " . $stmt->error
+    ]);
 }
 
 $stmt->close();
 $conn->close();
-
-
-
-
-
-
-
-
-  

@@ -99,17 +99,20 @@ function AddEditCards() {
 
     try {
       // Update set metadata (name, description)
-      const resUpdateSet = await fetch("http://localhost/Quiz-it/backend/sets/update.php", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          set_id: cardSet.set_id,
-          set_name: cardSet.set_name,
-          description: cardSet.description,
-        }),
-      });
+      const resUpdateSet = await fetch(
+        "http://localhost/Quiz-it/backend/sets/update.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            set_id: cardSet.set_id,
+            set_name: cardSet.set_name,
+            description: cardSet.description,
+          }),
+        }
+      );
 
       const resultUpdateSet = await resUpdateSet.json();
       console.log(resultUpdateSet.message);
@@ -132,8 +135,8 @@ function AddEditCards() {
             definition: card.definition,
           }),
         })
-        .then(response => response.json())
-        .then(data => console.log(data.message))
+          .then((response) => response.json())
+          .then((data) => console.log(data.message));
       });
 
       await Promise.all(cardUpdatePromises);
@@ -145,14 +148,18 @@ function AddEditCards() {
         );
       });
 
-      const cardDeletePromises = deletedCards.map(async (card) => 
-        await fetch("http://localhost/Quiz-it/backend/cards/specific_delete.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(card)
-      })
+      const cardDeletePromises = deletedCards.map(
+        async (card) =>
+          await fetch(
+            "http://localhost/Quiz-it/backend/cards/specific_delete.php",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(card),
+            }
+          )
       );
 
       await Promise.all(cardDeletePromises);
