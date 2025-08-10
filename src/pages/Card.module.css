@@ -181,6 +181,7 @@
 
 .closeButton:hover {
   color: hsl(210, 100%, 50%);
+  cursor: pointer;
 }
 
 .studyChoices {

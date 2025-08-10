@@ -89,20 +89,6 @@ function Card() {
     fetchData();
   }, []);
 
-  /**
-   * Navigates to the AddEditCards page with current set and card data.
-   */
-  const GoToAddEditCards = () => {
-    navigate("/AddEditCards", {
-      state: {
-        set_id: cardSet.set_id,
-        set_name: cardSet.set_name,
-        description: cardSet.description,
-        cards,
-      },
-    });
-  };
-
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({
@@ -127,7 +113,19 @@ function Card() {
         >
           Study
         </button>
-        <button onClick={GoToAddEditCards} className={styles.addEditButton}>
+        <button
+          onClick={() =>
+            navigate("/AddEditCards", {
+              state: {
+                set_id: cardSet.set_id,
+                set_name: cardSet.set_name,
+                description: cardSet.description,
+                cards,
+              },
+            })
+          }
+          className={styles.addEditButton}
+        >
           Add/Edit Cards
         </button>
       </div>
@@ -178,16 +176,52 @@ function Card() {
               />
             </div>
             <div className={styles.studyPopUpChoices}>
-              <button className={styles.studyChoices}>
+              <button
+                onClick={() =>
+                  navigate("/FlashCard", {
+                    state: {
+                      set_id: cardSet.set_id,
+                    },
+                  })
+                }
+                className={styles.studyChoices}
+              >
                 <FlashcardsIcon className={styles.icon} /> Flashcards
               </button>
-              <button className={styles.studyChoices}>
+              <button
+                onClick={() =>
+                  navigate("/MultipleChoice", {
+                    state: {
+                      set_id: cardSet.set_id,
+                    },
+                  })
+                }
+                className={styles.studyChoices}
+              >
                 <MultipleChoiceIcon className={styles.icon} /> Multiple Choice
               </button>
-              <button className={styles.studyChoices}>
+              <button
+                onClick={() =>
+                  navigate("/Writing", {
+                    state: {
+                      set_id: cardSet.set_id,
+                    },
+                  })
+                }
+                className={styles.studyChoices}
+              >
                 <WritingIcon className={styles.icon} /> Writing
               </button>
-              <button className={styles.studyChoices}>
+              <button
+                onClick={() =>
+                  navigate("/MatchList", {
+                    state: {
+                      set_id: cardSet.set_id,
+                    },
+                  })
+                }
+                className={styles.studyChoices}
+              >
                 <MatchListIcon className={styles.icon} /> Match List
               </button>
             </div>
