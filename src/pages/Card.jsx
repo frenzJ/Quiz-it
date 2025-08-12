@@ -181,6 +181,7 @@ function Card() {
                   navigate("/FlashCard", {
                     state: {
                       set_id: cardSet.set_id,
+                      cards,
                     },
                   })
                 }
@@ -193,6 +194,7 @@ function Card() {
                   navigate("/MultipleChoice", {
                     state: {
                       set_id: cardSet.set_id,
+                      cards,
                     },
                   })
                 }
@@ -205,6 +207,7 @@ function Card() {
                   navigate("/Writing", {
                     state: {
                       set_id: cardSet.set_id,
+                      cards,
                     },
                   })
                 }
@@ -217,6 +220,7 @@ function Card() {
                   navigate("/MatchList", {
                     state: {
                       set_id: cardSet.set_id,
+                      cards,
                     },
                   })
                 }
